@@ -63,12 +63,48 @@ The goal is to reduce waiting times, miscommunication, and simplify patient hosp
 
 ---
 
-## ⚙ Setup & Installation
+# Step 1: Install required tools (Python 3.8+)
+pip install -r requirements.txt
 
-Here are steps to get HospEase running locally:
+# Step 2: Prepare training data
+python generate_training_data.py
 
-1. Install required tools:  
-   ```bash
-   # assuming Python 3.8+
-   pip install -r requirements.txt
+# Step 3: Train the chatbot model
+python train_chatbot_model.py
+
+# Step 4: Run the web UI (open index.html in browser) 
+# or host via simple HTTP server
+python -m http.server 8000
+
+# Step 5 (Optional): If a backend server is implemented
+# configure environment variables, database, then run server
+
+## Usage
+
+# Patients can visit the web portal and ask health/hospital related questions through the chatbot.
+# Admins can view/manage hospital details and adjust Q-A pairs used by the chatbot.
+# Updating the CSV/data and re-training the model improves chatbot responses.
+
+## Data & Training
+
+# chatbot_training_data.csv contains training samples: user questions and expected answers.
+# generate_training_data.py preprocesses/augments data (cleaning, normalization, paraphrasing, etc.).
+# train_chatbot_model.py trains a ML/NLP model (rule-based or transformer/intent-classification) to generate responses.
+
+## Contributing
+
+# Contributions are welcome! You can help by:
+# - Adding more realistic training examples (questions & responses)
+# - Improving model accuracy or adding context awareness
+# - Enhancing UI / adding features (appointment booking, notifications)
+# - Refactoring code and improving performance
+
+## Future Enhancements
+
+# - Deploy backend with REST API for better scalability
+# - Use a more advanced chatbot framework (e.g., Rasa, Dialogflow)
+# - Add user authentication and role-based dashboards
+# - Integrate with hospital databases for live data
+# - Provide multilingual support
+
 
